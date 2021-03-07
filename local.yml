@@ -29,5 +29,5 @@
       name: ansible auto-provision
       user: ansibleadmin
       minute: "*/30"
-      job: 0~sudo ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
+      job: ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
 
