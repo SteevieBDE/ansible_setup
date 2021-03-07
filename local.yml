@@ -49,4 +49,3 @@
       user: ansibleadmin
       minute: "*/30"
       job: ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
-
