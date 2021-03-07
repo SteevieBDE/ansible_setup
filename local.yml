@@ -24,13 +24,14 @@
         upgrade: dist
       when: ansible_distribution in ["Debian", "Ubuntu"]
 
+    - name: Set timezone to Europe/Berlin if version is 2.9.0 or higher
+      community.general.timezone:
+        name: Europe/Berlin  
+      when: my_version is version('2.8.9', '>')
+
+
 
   tasks: 
-
-  - name: Set timezone to Europe/Berlin if version is 2.9.0 or higher
-    community.general.timezone:
-      name: Europe/Berlin  
-    when: my_version is version('2.8.9', '>')
 
   - name: install packages
     package:
