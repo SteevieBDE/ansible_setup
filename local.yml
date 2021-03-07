@@ -10,5 +10,24 @@
         - htop
         - git
         - nano
-        - tmux
+
+  - name: add ansible user
+    user:
+      name: ansibleadmin
+      system: yes
+
+  - name: set up sudo for ansible user
+    copy:
+      src: files/sudoer_ansibleadmin
+      dest: /etc/sudoers.d/ansibleadmin
+      owner: root
+      group: root
+      mode: 0440
+ 
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: ansibleadmin
+      minute: "*/30"
+      job: 0~sudo ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
 
