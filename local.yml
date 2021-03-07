@@ -16,6 +16,13 @@
       changed_when: False
       when: ansible_distribution in ["Debian", "Ubuntu"]
 
+    - name: Update all packages to their latest version
+      apt:
+        name: "*"
+        state: latest
+      when: ansible_distribution in ["Debian", "Ubuntu"]
+
+
   tasks: 
 
   - name: Set timezone to Europe/Berlin
