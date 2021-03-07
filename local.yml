@@ -15,7 +15,11 @@
       apt: update_cache=yes
       changed_when: False
       when: ansible_distribution in ["Debian", "Ubuntu"]
-  
+
+    - name: Set timezone to Europe/Berlin
+      community.general.timezone:
+      name: Europe/Berlin  
+
   tasks: 
   - name: install packages
     package:
@@ -23,6 +27,7 @@
         - htop
         - git
         - nano
+        - borgbackup
 
   - name: add ansible user
     user:
