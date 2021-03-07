@@ -6,9 +6,9 @@
   tasks: 
   - name: install packages
     package:
-      name: htop
-      name: git
-      name: nano
+      name: 
+        - htop
+        - git
+        - nano
+        - tmux
 
-
-      
