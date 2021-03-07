@@ -26,7 +26,6 @@
     package:
       name: 
         - htop
-        - git
         - nano
         - borgbackup
 
