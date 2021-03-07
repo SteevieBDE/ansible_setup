@@ -16,10 +16,9 @@
       changed_when: False
       when: ansible_distribution in ["Debian", "Ubuntu"]
 
-    - name: Update all packages to their latest version
+    - name: Upgrade the OS (apt-get dist-upgrade)
       apt:
-        name: "*"
-        state: latest
+        upgrade: dist
       when: ansible_distribution in ["Debian", "Ubuntu"]
 
 
