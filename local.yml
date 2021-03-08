@@ -33,6 +33,7 @@
         - htop
         - nano
         - borgbackup
+        - tmux
 
   - name: add ansible user
     user:
