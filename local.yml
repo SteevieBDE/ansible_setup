@@ -54,4 +54,4 @@
       user: ansibleadmin
       minute: "17"
       hour: "*/6"
-      job: ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
+      job: /usr/local/bin/ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
