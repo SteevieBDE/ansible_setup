@@ -60,3 +60,14 @@
       minute: "17"
       hour: "*/6"
       job: /usr/local/bin/ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
+      when: ansible_facts['distribution'] == "Ubuntu"
+
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: ansibleadmin
+      minute: "17"
+      hour: "*/6"
+      job: /usr/bin/ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
+      when: ansible_facts['distribution'] == "Debian"
+
