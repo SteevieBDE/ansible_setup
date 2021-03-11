@@ -53,21 +53,21 @@
       group: root
       mode: 0440
  
-  - name: add ansible-pull cron job
+  - name: add ansible-pull cron job for Ubuntu
     cron:
       name: ansible auto-provision
       user: ansibleadmin
       minute: "17"
       hour: "*/6"
       job: /usr/local/bin/ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
-      when: ansible_facts['distribution'] == "Ubuntu"
+    when: ansible_facts['distribution'] == "Ubuntu"
 
-  - name: add ansible-pull cron job
+  - name: add ansible-pull cron job for Debian
     cron:
       name: ansible auto-provision
       user: ansibleadmin
       minute: "17"
       hour: "*/6"
       job: /usr/bin/ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
-      when: ansible_facts['distribution'] == "Debian"
+    when: ansible_facts['distribution'] == "Debian"
 
