@@ -35,6 +35,11 @@
         - borgbackup
         - tmux
 
+  - name: add syncthing user user
+    user:
+      name: syncthingadmin
+      system: yes
+
   - name: add ansible user
     user:
       name: ansibleadmin
