@@ -14,7 +14,7 @@ syncthingserver.milchstrasse.universum
 
 [shortserver]
 mysqldb.milchstrasse.universum
-ansiblegithub
+ansiblegithub.milchstrasse.universum
 
 [simpleserver]
 rplangw.milchstrasse.universum
