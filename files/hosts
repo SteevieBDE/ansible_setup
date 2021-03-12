@@ -2,7 +2,6 @@
 camftp.milchstrasse.universum
 mosquitto.milchstrasse.universum
 borgbackup.milchstrasse.universum
-ansiblegithub.milchstrasse.universum
 pihole.milchstrasse.universum
 dellnotebook.milchstrasse.universum
 homecenter.milchstrasse.universum
@@ -15,6 +14,7 @@ syncthingserver.milchstrasse.universum
 
 [shortserver]
 mysqldb.milchstrasse.universum
+ansiblegithub.milchstrasse.universum
 
 [simpleserver]
 rplangw.milchstrasse.universum
