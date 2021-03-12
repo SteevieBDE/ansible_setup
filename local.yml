@@ -10,7 +10,7 @@
         dest: /etc/ansible/hosts
         owner: root
         group: root
-        mode: 0440
+        mode: 0644
 
     - name: pre-run | update package cache (arch)
       tags: always
