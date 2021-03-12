@@ -47,7 +47,7 @@
     user:
       name: syncthingadmin
       system: yes
-    when: ansible_hostname in group['syncthingserver']
+    when: 'syncthingserver' in group_names
 
   - name: add ansible user
     user:
@@ -69,7 +69,7 @@
       minute: "17"
       hour: "*/6"
       job: /usr/local/bin/ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
-    when: (ansible_hostname in group['longserver']) or (ansible_hostname in group['ungrouped'])
+    when: ('longserver' in group_names) or ('ungrouped' in group_names)
 
   - name: add ansible-pull cron job for Debian
     cron:
@@ -78,5 +78,5 @@
       minute: "17"
       hour: "*/6"
       job: /usr/bin/ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
-    when: ansible_hostname in group['shortserver']
+    when: 'shortserver' in group_names
 
