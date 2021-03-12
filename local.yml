@@ -62,7 +62,7 @@
       group: root
       mode: 0440
  
-  - name: add ansible-pull cron job for Raspbian and Ubuntu
+  - name: add ansible-pull cron job for USR LOCAL BIN
     cron:
       name: ansible auto-provision
       user: ansibleadmin
@@ -71,7 +71,7 @@
       job: /usr/local/bin/ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
     when: "('longserver' in group_names) or ('ungrouped' in group_names)"
 
-  - name: add ansible-pull cron job for Debian
+  - name: add ansible-pull cron job for USR BIN
     cron:
       name: ansible auto-provision
       user: ansibleadmin
@@ -80,3 +80,9 @@
       job: /usr/bin/ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
     when: "'shortserver' in group_names"
 
+  - debug:
+      msg: 
+        - "System {{ inventory_hostname }}" 
+        - "System {{ ansible_hostname }}"
+        - "System {{ group_names }}"
+        - "System {{ ansible_hostname }}"
