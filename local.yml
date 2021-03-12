@@ -4,6 +4,14 @@
   become: true
 
   pre_tasks:
+  - name: copy hosts file to position
+    copy:
+      src: files/hosts
+      dest: /etc/ansible/hosts
+      owner: root
+      group: root
+      mode: 0440
+
     - name: pre-run | update package cache (arch)
       tags: always
       pacman: update_cache=yes
@@ -14,12 +22,12 @@
       tags: always
       apt: update_cache=yes
       changed_when: False
-      when: ansible_distribution in ["Debian", "Ubuntu"]
+      when: ansible_distribution in ["Debian", "Ubuntu", "Raspbian"]
 
     - name: Upgrade the OS (apt-get dist-upgrade)
       apt:
         upgrade: dist
-      when: ansible_distribution in ["Debian", "Ubuntu"]
+      when: ansible_distribution in ["Debian", "Ubuntu", "Raspbian"]
 
     - name: Set timezone to Europe/Berlin
       community.general.timezone:
@@ -53,14 +61,16 @@
       group: root
       mode: 0440
  
-  - name: add ansible-pull cron job for Ubuntu
+  - name: add ansible-pull cron job for Raspbian and Ubuntu
     cron:
       name: ansible auto-provision
       user: ansibleadmin
       minute: "17"
       hour: "*/6"
       job: /usr/local/bin/ansible-pull -o -U https://github.com/SteevieBDE/ansible_setup.git
-    when: ansible_facts['distribution'] == "Ubuntu"
+    when: 
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution'] == "Raspbian"
 
   - name: add ansible-pull cron job for Debian
     cron:
